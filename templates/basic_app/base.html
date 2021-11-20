@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+          <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        </title>
+    </head>
+    <body> 
+        <nav class ='navbar navbar-default navbar-static-top'>
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{url 'index'}">DJANGO</a></li>
+                    <li><a class="navbar-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+                    <li><a class="navbar-link" href="{%url 'second_app:register' %}">REGISTERr</a></li> 
+                    {% if user.is_authenticated %}
+                      <li><a classs ='navbar-link' href="{% url 'logout'%}">Logout</a></li>
+                    {% else %}  
+                       <li><a class ="navbar-link" href="{% url 'second_app:user_login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class ="container">
+                {% block body_block%}
+{% endblock %}                
+            </div>
+        </nav>
+
+    </body>
+</html>
